@@ -3,6 +3,7 @@ from diagrams.gcp.compute import GCF
 from diagrams.onprem.database import Postgresql
 from diagrams.generic.compute import Rack
 from diagrams.generic.database import SQL
+from diagrams.onprem.ci import GithubActions
 from diagrams.onprem.inmemory import Redis
 from diagrams.onprem.monitoring import Grafana, Prometheus
 from diagrams.onprem.network import Nginx
@@ -69,7 +70,7 @@ with Diagram("goatcorp", show=False):
         )
 
     with Cluster("GitHub"):
-        plogon = Github("Plogon")
+        plogon = GithubActions("Plogon")
         helpy = Github("Helpy")
         faq = Github("FAQ")
         plogon >> Edge(color="black") >> cf_dns
